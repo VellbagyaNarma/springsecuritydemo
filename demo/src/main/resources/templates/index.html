@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    
+<title>Insert title here</title>
+</head>
+<body>
+<div align="center">
+<h1>ProductManager</h1>
+<a th:href="new">create new product</a>
+<br/><br/>
+<a href="/logout">Logout</a>
+<table border="1" cellpadding="10">
+<thead>
+<th>ID</th>
+<th>Foodname</th>
+<th>Foodcolor</th>
+<th>Foodtype</th>
+<th>actions</th>
+
+</thead>
+<tbody>
+<tr th:each="product:${listfood}">
+<td th:text="${product.id}">ID</td>
+<td th:text="${product.foodname}">Foodname</td>
+<td th:text="${product.foodcolor}">Foodcolor</td>
+<td th:text="${product.foodtype}">Foodtype</td>
+<!--  <td><a th:href="@{'/edit/'+ {product.id}}">Update</a></td>-->
+<td><a th:href="@{/edit/{id}(id=${product.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
+<td><a th:href="@{/delete/{id}(id=${product.id})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
+                                    
+
+</tr>
+</tbody>
+
+</table>
+</div>
+
+</body>
+</html>
